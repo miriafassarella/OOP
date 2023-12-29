@@ -1,7 +1,7 @@
 package ioc.di;
 
 import ioc.di.model.Client;
-import ioc.di.notifier.NotifierEmail;
+
 import ioc.di.notifier.NotifierSMS;
 import ioc.di.service.ActivationClientService;
 
