@@ -9,12 +9,19 @@ public class Main {
 		schoolClassB.teacherName = "Teacher Geneviève";
 		schoolClassB.students = new Student[3];
 		
+				
+		schoolClassB.students[0] = new Student();
+		schoolClassB.students[0].age = 39;
+		schoolClassB.students[0].name = "Miria";
+		
 		Student student1 = new Student();
-		student1.age = 39;
-		student1.name = "Miria";
+		student1.name = "Maggie";
+		student1.age = 6;
 		
-		schoolClassB.students[0] = student1;
+		schoolClassB.students[1] = student1;
 		
+		
+		schoolClassB.printStudents();
 	}
 	
 	
