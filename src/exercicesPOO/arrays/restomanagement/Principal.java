@@ -24,16 +24,11 @@ public class Principal {
         
         
 
-		//menu.imprimirItensCardapio(80, 150);
+		menu.imprimirItensCardapio(80, 150);
 		  
-		menu.removerItem(2); System.out.println("---");
+		//menu.removerItem(2); System.out.println("---");
 		
-		 
-		
-       
-		
-		
-	//menu.imprimirItensCardapio(0, 150);
+		menu.imprimirItensCardapio(0, 150);
 		
 		}
 		
