@@ -13,8 +13,13 @@ public class Menu {
     }
 
     void removerItem(int indice) {
+    	MenuItem[] newItens = new MenuItem[this.itens.length - 1];
+    
+    	System.arraycopy(this.itens, 0, newItens, 0, indice);
+    	System.arraycopy(this.itens, indice + 1, newItens, indice, newItens.length - indice);
     	
-    // TODO implementar exclusão de item do cardápio da posição informada
+    	this.itens = Arrays.copyOf(newItens, newItens.length);
+    	
     }
 
     void imprimirItensCardapio(double precoMinimo, double precoMaximo) {

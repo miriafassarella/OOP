@@ -1,5 +1,6 @@
 package exercicesPOO.arrays.restomanagement;
 
+import java.util.Arrays;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -17,9 +18,9 @@ public class Principal {
         item3.description = "Batata frita 300g";
         item3.price = 12;
 
-       // menu.adicionarItem(item1);
-       // menu.adicionarItem(item2);
-       // menu.adicionarItem(item3);
+        menu.adicionarItem(item1);
+        menu.adicionarItem(item2);
+        menu.adicionarItem(item3);
         
         
 
@@ -27,15 +28,21 @@ public class Principal {
 		  
 		menu.removerItem(2); System.out.println("---");
 		
+		 
+		
+       
+		
+		
+	//menu.imprimirItensCardapio(0, 150);
 		
 		}
 		
-		
+}
         
 		  
-		//menu.imprimirItensCardapio(0, 150);
+		
 		 
-    }
+    
 	
 
 
