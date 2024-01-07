@@ -1,24 +1,20 @@
 package exercicesPOO.arrays.restomanagement;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Menu {
 
-	MenuItem[] itens = new MenuItem[0] ;
+	ArrayList<MenuItem> itens = new ArrayList<>();
 
     void adicionarItem(MenuItem item) {
-    	this.itens = Arrays.copyOf(this.itens, this.itens.length + 1);
-    	this.itens[this.itens.length -1] = item;
+    	itens.add(item);
     	
     }
 
-    void removerItem(int indice) {
-    	MenuItem[] newItens = new MenuItem[this.itens.length - 1];
-    
-    	System.arraycopy(this.itens, 0, newItens, 0, indice);
-    	System.arraycopy(this.itens, indice + 1, newItens, indice, newItens.length - indice);
+    void removerItem(MenuItem indice) {
     	
-    	this.itens = Arrays.copyOf(newItens, newItens.length);
+    	itens.remove(indice);
     	
     }
 
@@ -26,13 +22,13 @@ public class Menu {
     	
     	MenuItem[] print1 = new MenuItem[0];
     	
-    	for(int i = 0; i < itens.length; i++) {
+    	for(int i = 0; i < itens.size(); i++) {
     		
     		
-    		if(itens[i].price > precoMinimo && itens[i].price < precoMaximo) {
+    		if(itens.get(i).price > precoMinimo && itens.get(i).price < precoMaximo) {
     			
     			print1 = Arrays.copyOf(print1, print1.length + 1);
-    			print1[print1.length - 1] = itens[i];
+    			print1[print1.length - 1] = itens.get(i);
     			
         		System.out.println(print1[i].description);
         		System.out.println(print1[i].price);
@@ -40,7 +36,6 @@ public class Menu {
         	}
     	}
     	
-        // TODO implementar código para imprimir na console os itens
-        //  do cardápio que estiverem entre o preço mínimo e máximo
-    }
+       
+}
 }
