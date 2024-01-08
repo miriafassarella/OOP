@@ -27,7 +27,7 @@ public class Principal {
 		  
 		menu.removerItem(item2); System.out.println("---");
 		
-		menu.imprimirItensCardapio(0, 150);
+		menu.imprimirItensCardapio(0, 10);
 		
 		}
 		
