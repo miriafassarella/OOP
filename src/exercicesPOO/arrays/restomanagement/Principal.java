@@ -1,5 +1,6 @@
 package exercicesPOO.arrays.restomanagement;
 
+import java.util.Arrays;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class Principal {
         menu.adicionarItem(item2);
         menu.adicionarItem(item3);
         
-        
+        System.out.println(Arrays.toString(args));
 
 		menu.imprimirItensCardapio(80, 150);
 		  
