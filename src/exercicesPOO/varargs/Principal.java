@@ -22,6 +22,8 @@ public class Principal {
 			 */
 		 /*billingService.pay(invoice, ...mailBilling: "miria@gmail.com");  ???*/ 
 		 billingService.pay(invoice);
+		 
+		 billingService.average(10.5, 8.5, 7.7, 8.9, 10.10);
 	}
 	
 }

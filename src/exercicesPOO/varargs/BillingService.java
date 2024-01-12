@@ -11,6 +11,19 @@ public class BillingService {
 		}
 	}
 	
+	void average(double number1, double number2, double ...others) {
+		
+		double totalPartial = number1 + number2;
+		int numberOfElements = others.length + 2;
+		
+		for(double other : others) {
+			totalPartial += other;
+		}
+		System.out.println( "This is the average : " + (totalPartial /numberOfElements));
+		
+		
+	}
+	
 	
 
 }
