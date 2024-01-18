@@ -27,5 +27,17 @@ public class Rental {
 	public void setDailyAmount(int dailyAmount) {
 		this.dailyAmount = dailyAmount;
 	}
+
+	public double getDailyValue() {
+		
+		return vehicle.getDailyValue();
+	}
+	
+	public double calculateTotalDaily() {
+		return getDailyValue() * dailyAmount;
+	}
+	public void reserveVihicle() {
+		vehicle.setAvailable(false);
+	}
 	
 }

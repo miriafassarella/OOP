@@ -37,6 +37,11 @@ public class Vehicle {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
+
+	public double getDailyValue() {
+	
+		return group.getDailyValue();
+	}
 	
 	
 }

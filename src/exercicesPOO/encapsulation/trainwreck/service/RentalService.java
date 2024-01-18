@@ -4,13 +4,13 @@ import exercicesPOO.encapsulation.trainwreck.Rental;
 
 public class RentalService {
 
-	public double confirmRental(Rental rental) {
+	public void confirmRental(Rental rental) {
 	/*------------here is the problem-----------------------------*/
-		double totalDaily = rental.getVehicle().getGroup()
-				.getDailyValue() * rental.getDailyAmount();
+	/* double totalDaily = rental.getDailyValue() * rental.getDailyAmount(); */
 	/*-----------------------------------------------------------*/	
-		rental.getVehicle().setAvailable(false);
-		return totalDaily;
+		double totalDaily = rental.calculateTotalDaily();
+		rental.reserveVihicle();
+		
 	}
 	
 }
