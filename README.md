@@ -53,7 +53,7 @@ public class AtivacaoClienteService {
 ```
 #### Mais en activant un client, je veux aussi le notifier. Disons que je veux avoir le choix de lui notifier soit par SMS, soit par courriel.
 #### Alors, je crée la classe NotifierEmail et NotifierSMS.
-#### Je ne vais pas configurer reélement l'envoie d'un courriel ou d'un SMS. On veut juste afficher dans la console la notification.
+#### Je ne vais pas configurer reelement l'envoie d'un courriel ou d'un SMS. On veut juste afficher dans la console la notification.
 ```
 public class NotifierEmail{ 
 	public void notifier(Client client, String message) {
