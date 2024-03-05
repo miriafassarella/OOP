@@ -17,7 +17,7 @@ public class ActivationClientService {
 	public void activate(Client client) {
 		client.activate();
 
-		NotifierEmail notificadorEmail = NotifierEmail();
+		NotifierEmail notifierEmail = NotifierEmail();
 		notifier.notifier(client, "your registration in the system is active.");
 	}
 	}
@@ -27,7 +27,7 @@ public class ActivationClientService {
 - La classe NotifierEmail et NotifierSMS vont implémenter l'interface Notifier.
 - Nous injectons un notificateur dans le constructeur de la classe ActivationClientService.
   
-<br>De cette façon, on donne le contrôle à quelqu'un qui est dehors de la classe:
+<br>De cette façon, on donne le contrôle d'intancier le type de notification à quelqu'un qui est dehors de la classe:
 <br>
   ```
   public class ActivationClientService {
