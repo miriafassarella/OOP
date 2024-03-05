@@ -1,16 +1,78 @@
 # OOP
-##### Repository created to put into practice the knowledge acquired in oop - Object Oriented Programming.<br>
+### Repository created to put into practice the knowledge acquired in oop - Object Oriented Programming<br>
+##### Ce Repository est un résumé de mon apprentissage de DI et IOC en suivant la formation Expert Spring Rest dans la plateforme AlgaWorks .
 
 ---
-Incection de Dépendances
+Injection de Dépendances (DI - Dependency Injection)
 ---
-![injection](https://github.com/miriafassarella/OOP/assets/43910212/d214990b-3a79-4bd9-a46f-c734cc666d3e)
+L'Injection de Dépendance est une forme d'Inversion de contrôle (Ioc - Inversion of control), un patron de conception qui favorise le faible couplage.
 
-Dans une partie de ce project, on peut voir l'implementation de l'Injection de dépendances et de l'Inversion de contrôle à l'intérieur du packet ioc/di.<br>
+Dans une partie de ce project, je mets en place le concept de l'Injection de dépendance et de l'Inversion de contrôle à l'intérieur du packet ioc/di.<br>
 
-Par exemple, nous injectons dans le contructeur de la classe ActivationClientService l'interface Notifier pour pouvoir enlever le contrôle du type de notification de cette classe.
-  
-Pour simplifier, si on n'utilise pas l'inversion de contrôle, nous n'aurions pas l'interface Notifier et la classe ActivationClientService restera de cette façon: 
+#### Par exemple: J'ai une classe toute simple qui s'appelle Client. 
+```
+public class Cliente {
+
+	private String name;
+	private String mail;
+	private String phone;
+	private boolean active = false;
+	
+	public Cliente(String name, String mail,String phone) {
+		this.name = name;
+		this.mail = mail;
+		this.phone = phone;
+	}
+
+	public String getName() {
+			return name;
+		}
+	public String getMail() {
+			return mail;
+		}
+	public String getPhone() {
+			return phone;
+		}
+	public boolean isActive() {
+			return active;
+		}
+	public void activate() {
+			this.active = true;
+		}
+}
+```
+#### Je crée une classe pour activer un client:
+```
+public class AtivacaoClienteService {
+
+	public void ativar(Cliente cliente) {
+		cliente.activate();
+		
+	}
+}
+```
+#### Mais en activant un client, je veux aussi le notifier. Disons que je veux avoir le choix de lui notifier soit par SMS, soit par courriel.
+#### Alors, je crée la classe NotifierEmail et NotifierSMS.
+#### Je ne vais pas configurer reélement l'envoie d'un courriel ou d'un SMS. On veut juste afficher dans la console la notification.
+```
+public class NotifierEmail{ 
+	public void notifier(Client client, String message) {
+	/* TODO méthode pour envoyer un courriel à programmer*/
+		System.out.printf("Notifying the customer %s via email %s: %s\n",
+				client.getName(), client.getMail(), message);
+	}
+}
+```
+```
+public class NotifierSMS{
+	public void notifier(Client client, String message) {
+		/* TODO méthode pour envoyer un courriel à programmer*/
+		System.out.printf("Notifying the customer %s via phone %s: %s\n",
+				client.getName(), client.getPhone(), message);
+	}
+}
+```
+#### Maintenant j'ai besoin d'instancier un objet NotifierSMS ou un objet NtifierEmail dans la classe ActivationClientService et appeller la methode notifier().
 
 ```
 public class ActivationClientService {
@@ -22,25 +84,77 @@ public class ActivationClientService {
 	}
 	}
 ```
-<br>Mais on veut enlever le contrôle de cette classe :  
-- Alors nous créons une interface Notifier.
-- La classe NotifierEmail et NotifierSMS vont implémenter l'interface Notifier.
-- Nous injectons un notificateur dans le constructeur de la classe ActivationClientService.
-  
-<br>De cette façon, on donne le contrôle d'intancier le type de notification à quelqu'un qui est dehors de la classe:
-<br>
-  ```
-  public class ActivationClientService {
+#### Dans la classe Main, j'acitive les clients. 
+```
+public class Main {
+	public static void main(String[] args) {
+		Client jean = new Client("Jean","jean@gmail.com", "234567788" );
+		Client marie = new Client("Marie","marie@gmail.com", "099876445" );
 
-	Notifier notifier;
+		ActivationClientService activationClient = new ActivationClientService();
+		activationClient.activate(marie);
+		activationClient.activate(jean);
+	}
+}
+```
+#### Mais disons que on a pas juste la classe ActivateClientService, on a des centaines de classes qui font des diffentes choses et que à chaque appel d'une de ces classes, on veut notifier le client. Pour pouvoir changer la façon de notifier le client, soit par SMS, soit par courriel, on va avoir besoin d'aller en chaque classe pour pouvoir modifier la façon de notifier. 
+```
+public class ActivationClientService {
+	public void activate(Client client) {
+		client.activate();
 
-	public ActivationClientService(Notifier notifier) {
+		NotifierSMS notifierSMS = NotifierSMS();
+		notifier.notifier(client, "your registration in the system is active.");
+	}
+	}
+```
+<br> Alors pour rendre les choses plus simples, je vai creer une interface Notifier et NotifierEmail et NotifierSMS vont implémenter cette interface:
+```
+public interface Notifier { 
+	void notifier(Client client, String message);
+}
+```
+```
+public class NotifierSMS implements Notifier{
+	@Override
+	public void notifier(Client client, String message) {
+		/* TODO méthode pour envoyer un courriel à programmer*/
+		System.out.printf("Notifying the customer %s via phone %s: %s\n",
+				client.getName(), client.getPhone(), message);
+	}
+}
+```
+```
+public class ActivationClientService {
+	private Notifier notifier;
+	public ActivationClientService(Notifier notifier){
 		this.notifier = notifier;
 	}
 	public void activate(Client client) {
 		client.activate();
-		notifier.notifier(client, "your registration in the system is active.");
+		this.notifier.notifier(client, "your registration in the system is active.");
 	}
-	})
+}
+```
+#### La classe ActivationClientService n'a plus le contrôle sur quelle genre de notification va être envoyer, courriel ou sms.
+#### Pour enlever le contrôle de cette classe : 
+- J'ai crée une interface Notifier.
+- La classe NotifierEmail et NotifierSMS implémente l'interface Notifier.
+- J'ai injectée un notificateur dans le constructeur de la classe ActivationClientService.
+  
+#### De cette façon, on donne le contrôle d'intancier le type de notification à quelqu'un qui est dehors de la classe ActivationClientService:
+```
+public class Main {
+	public static void main(String[] args) {
+		Client jean = new Client("Jean","jean@gmail.com", "234567788" );
+		Client marie = new Client("Marie","marie@gmail.com", "099876445" );
+
+		Notifier notifier = new NotifierSMS();
+		ActivationClientService activationClient = new ActivationClientService(notifier);
+		activationClient.activate(marie);
+		activationClient.activate(jean);
+	}
+}
 ```
 
+![injection](https://github.com/miriafassarella/OOP/assets/43910212/d214990b-3a79-4bd9-a46f-c734cc666d3e)
