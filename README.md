@@ -72,7 +72,7 @@ public class NotifierSMS{
 	}
 }
 ```
-#### Maintenant j'ai besoin d'instancier un objet NotifierSMS ou un objet NtifierEmail dans la classe ActivationClientService et appeller la methode notifier().
+#### Maintenant j'ai besoin d'instancier un objet NotifierSMS ou un objet NotifierEmail dans la classe ActivationClientService et appeller la méthode notifier().
 
 ```
 public class ActivationClientService {
