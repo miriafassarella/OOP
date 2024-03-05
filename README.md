@@ -82,7 +82,7 @@ public class ActivationClientService {
 		client.activate();
 
 		NotifierEmail notifierEmail = NotifierEmail();
-		notifier.notifier(client, "your registration in the system is active.");
+		notifierEmail.notifier(client, "your registration in the system is active.");
 	}
 	}
 ```
