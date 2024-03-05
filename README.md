@@ -1,6 +1,6 @@
 # OOP
 ### Repository created to put into practice the knowledge acquired in oop - Object Oriented Programming<br>
-##### Ce Repository est un résumé de mon apprentissage de DI et IOC en suivant la formation Expert Spring Rest dans la plateforme AlgaWorks .
+##### Ce Repository est un résumé de mon apprentissage en DI et IOC en suivant la formation Expert Spring Rest dans la plateforme AlgaWorks .
 
 ---
 Injection de Dépendances (DI - Dependency Injection)
@@ -51,8 +51,10 @@ public class AtivacaoClienteService {
 	}
 }
 ```
-#### Mais en activant un client, je veux aussi le notifier. Disons que je veux avoir le choix de lui notifier soit par SMS, soit par courriel.
-#### Alors, je crée la classe NotifierEmail et NotifierSMS.
+Mais en activant un client, je veux aussi le notifier. Disons que je veux avoir le choix de lui notifier soit par SMS, soit par courriel.
+
+Alors, je crée la classe NotifierEmail et NotifierSMS.
+
 #### Je ne vais pas configurer reelement l'envoie d'un courriel ou d'un SMS. On veut juste afficher dans la console la notification.
 ```
 public class NotifierEmail{ 
@@ -97,7 +99,7 @@ public class Main {
 	}
 }
 ```
-#### Mais disons qu'on a pas juste la classe ActivateClientService, on a des centaines de classes qui font des diffentes choses et qu'à chaque appel d'une de ces classes, on veut notifier le client. Pour pouvoir changer la façon de notifier le client, soit par SMS, soit par courriel, on va avoir besoin d'aller en chaque classe pour pouvoir modifier la façon de notifier. 
+Mais disons qu'on a pas juste la classe ActivateClientService, on a des centaines de classes qui font des diffentes choses et qu'à chaque appel d'une de ces classes, on veut notifier le client. Pour pouvoir changer la façon de notifier le client, soit par SMS, soit par courriel, on va avoir besoin d'aller en chaque classe pour pouvoir modifier la façon de notifier. 
 ```
 public class ActivationClientService {
 	public void activate(Client client) {
@@ -136,7 +138,9 @@ public class ActivationClientService {
 	}
 }
 ```
-#### La classe ActivationClientService n'a plus le contrôle sur quelle notification va être envoyer, courriel ou sms.
+
+La classe ActivationClientService n'a plus le contrôle sur quelle notification va être envoyer, courriel ou sms.
+
 #### Pour enlever le contrôle de cette classe : 
 - J'ai crée une interface Notifier.
 - La classe NotifierEmail et NotifierSMS implémente l'interface Notifier.
