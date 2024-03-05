@@ -1,5 +1,11 @@
 # OOP
 ##### Repository created to put into practice the knowledge acquired in oop - Object Oriented Programming.<br>
+
+---
+Incection de Dépendances
+---
+![injection](https://github.com/miriafassarella/OOP/assets/43910212/d214990b-3a79-4bd9-a46f-c734cc666d3e)
+
 Dans une partie de ce project, on peut voir l'implementation de l'Injection de dépendances et de l'Inversion de contrôle à l'intérieur du packet ioc/di.<br>
 
 Par exemple, nous injectons dans le contructeur de la classe ActivationClientService l'interface Notifier pour pouvoir enlever le contrôle du type de notification de cette classe.
