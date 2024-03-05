@@ -12,7 +12,16 @@ Par exemple, nous injectons dans le contructeur de la classe ActivationClientSer
   
 Pour simplifier, si on n'utilise pas l'inversion de contrôle, nous n'aurions pas l'interface Notifier et la classe ActivationClientService restera de cette façon: 
 
-![ActivationClientService](https://github.com/miriafassarella/OOP/assets/43910212/6a2b10bd-c83b-4ac4-8544-b4394f15f477)
+```
+public class ActivationClientService {
+	public void activate(Client client) {
+		client.activate();
+
+		NotifierEmail notificadorEmail = NotifierEmail();
+		notifier.notifier(client, "your registration in the system is active.");
+	}
+	}
+```
 <br>Mais on veut enlever le contrôle de cette classe :  
 - Alors nous créons une interface Notifier.
 - La classe NotifierEmail et NotifierSMS vont implémenter l'interface Notifier.
@@ -20,6 +29,18 @@ Pour simplifier, si on n'utilise pas l'inversion de contrôle, nous n'aurions pa
   
 <br>De cette façon, on donne le contrôle à quelqu'un qui est dehors de la classe:
 <br>
-  
+  ```
+  public class ActivationClientService {
 
-![ioc](https://github.com/miriafassarella/OOP/assets/43910212/5faa9e9c-e8d1-4f29-9f2f-365f252c2623)
+	Notifier notifier;
+
+	public ActivationClientService(Notifier notifier) {
+		this.notifier = notifier;
+	}
+	public void activate(Client client) {
+		client.activate();
+		notifier.notifier(client, "your registration in the system is active.");
+	}
+	})
+```
+
