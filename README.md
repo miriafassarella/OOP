@@ -106,7 +106,7 @@ public class ActivationClientService {
 		client.activate();
 
 		NotifierSMS notifierSMS = NotifierSMS();
-		notifier.notifier(client, "your registration in the system is active.");
+		notifierSMS.notifier(client, "your registration in the system is active.");
 	}
 	}
 ```
