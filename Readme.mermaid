@@ -1,0 +1,19 @@
+---
+title : test
+---
+classDiagram
+
+    Notifier <.. NotifierEmail
+    Notifier <.. NotifierSMS
+   
+   class Notifier{
+        <<interface>>
+        +notifier()
+    }
+    class NotifierEmail{
+        +notifier()
+    }
+    class NotifierSMS{
+        -notifier()
+    }
+    
