@@ -7,7 +7,7 @@ Injection de Dépendances (DI - Dependency Injection)
 ---
 L'Injection de Dépendance est une forme d'Inversion de contrôle (Ioc - Inversion of control), un patron de conception qui favorise le faible couplage.
 
-Dans une partie de ce project, je mets en place le concept de l'Injection de dépendance et de l'Inversion de contrôle à l'intérieur du packet ioc/di.<br>
+Dans une partie de ce project, il a été mis en place le concept de l'Injection de dépendance et de l'Inversion de contrôle à l'intérieur du packet ioc/di.<br>
 
 #### Par exemple: J'ai une classe toute simple qui s'appelle Client. 
 ```
@@ -55,7 +55,7 @@ Mais en activant un client, je veux aussi le notifier. Disons que je veux avoir 
 
 Alors, je crée la classe NotifierEmail et NotifierSMS.
 
-#### Je ne vais pas configurer reelement l'envoie d'un courriel ou d'un SMS. On veut juste afficher dans la console la notification.
+#### On ne veut pas configurer reelement l'envoie d'un courriel ou d'un SMS. On veut juste afficher dans la console la notification.
 ```
 public class NotifierEmail{ 
 	public void notifier(Client client, String message) {
