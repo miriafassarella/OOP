@@ -99,7 +99,7 @@ public class Main {
 	}
 }
 ```
-Mais disons qu'on a pas juste la classe ActivateClientService, on a des centaines de classes qui font des diffentes choses et qu'à chaque appel d'une de ces classes, on veut notifier le client. Pour pouvoir changer la façon de notifier le client, soit par SMS, soit par courriel, on va avoir besoin d'aller en chaque classe pour pouvoir modifier la façon de notifier. 
+Mais disons qu'on a pas juste la classe ActivateClientService, on a des centaines de classes qui font des differentes choses et qu'à chaque appel d'une de ces classes, on veut notifier le client. Pour pouvoir changer la façon de notifier le client, soit par SMS, soit par courriel, on va avoir besoin d'aller en chaque classe pour pouvoir modifier la façon de notifier. 
 ```
 public class ActivationClientService {
 	public void activate(Client client) {
