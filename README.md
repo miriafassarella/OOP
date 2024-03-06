@@ -1,6 +1,6 @@
 # OOP
 ### Repository created to put into practice the knowledge acquired in oop - Object Oriented Programming<br>
-##### Ce Repository est un résumé de mon apprentissage en DI et IOC en suivant la formation Expert Spring Rest dans la plateforme AlgaWorks .
+#### L'exemple ci-dessous est une réplique du modèle qui a éte donné en classe, en suivant la formation Expert Spring Rest par la plateforme AlgaWorks .
 
 ---
 Injection de Dépendances (DI - Dependency Injection)
@@ -110,7 +110,7 @@ public class ActivationClientService {
 	}
 	}
 ```
-<br> Alors pour rendre les choses plus simples, je vai creer une interface Notifier et NotifierEmail et NotifierSMS vont implémenter l'interface:
+<br> Alors pour rendre les choses plus simples, je vais créer une interface Notifier et NotifierEmail et NotifierSMS vont implémenter l'interface:
 ```
 public interface Notifier { 
 	void notifier(Client client, String message);
@@ -139,7 +139,7 @@ public class ActivationClientService {
 }
 ```
 
-La classe ActivationClientService n'a plus le contrôle sur quelle notification va être envoyer, courriel ou sms.
+La classe ActivationClientService n'a plus le contrôle sur quelle notification va être envoyé, courriel ou sms.
 
 #### Pour enlever le contrôle de cette classe : 
 - J'ai crée une interface Notifier.
